@@ -57,11 +57,3 @@ class StreamListener(tweepy.StreamListener):
 streamer = tweepy.Stream(auth=auth, listener=StreamListener(), timeout=3000000000 )
 setTerms = ['@ramanujam']
 streamer.filter(None,setTerms)
-
-
-
-
-
-
-
-
