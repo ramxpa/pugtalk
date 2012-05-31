@@ -2,7 +2,6 @@ import tweepy
 import requests
 import simplejson as json
 import webbrowser
-from textwrap import TextWrapper
 
 # == OAuth Authentication ==
 #
@@ -15,7 +14,7 @@ consumer_key=""
 consumer_secret=""
 
 # The access tokens can be found on your applications's Details
-# page located at https://dev.twitter.com/apps (located 
+# page located at https://dev.twitter.com/apps (located
 # under "Your access token")
 access_token=""
 access_token_secret=""
@@ -26,7 +25,6 @@ auth.set_access_token(access_token, access_token_secret)
 tinykey=""
 
 class StreamListener(tweepy.StreamListener):
-    # status_wrapper = TextWrapper(width=60, initial_indent='    ', subsequent_indent='    ')
 
     def on_status(self, status):
         try:
@@ -47,5 +45,6 @@ class StreamListener(tweepy.StreamListener):
             pass
 
 streamer = tweepy.Stream(auth=auth, listener=StreamListener(), timeout=3000000000 )
+#Set the hashtag to track and get it as an input
 setTerms = ['#pugmusic']
 streamer.filter(None,setTerms)

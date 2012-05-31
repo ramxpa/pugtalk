@@ -3,18 +3,28 @@ import webbrowser
 from pygooglechart import PieChart3D
 
 def draw_obama_chart():
+    """
+    obama.txt is a comma seperated flatfile which contains the device
+    information of the tweets in this format.
+
+    user1, Twitter for iPhone
+    user2, Tweetdeck
+    user3, Twitter for Android
+    user4, web
+    """
     with open('obama.txt', 'r') as f:
         data_o = collections.Counter([line.split(',')[1].strip() for line in f.readlines()]).most_common()
 
     o_data = [app[1] for app in data_o][0:10]
     o_labels = [app[0] for app in data_o][0:10]
-   
+
     obamaChart = PieChart3D(400, 100)
     obamaChart.add_data(o_data)
     obamaChart.set_pie_labels(o_labels)
-    webbrowser.open_new_tab(obamaChart.get_url())    
+    webbrowser.open_new_tab(obamaChart.get_url())
 
 def draw_romney_chart():
+    #romney.txt is in the same format as obama.txt
     with open('romney.txt', 'r') as f:
         data_r = collections.Counter([line.split(',')[1].strip() for line in f.readlines()]).most_common()
 

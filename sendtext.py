@@ -13,7 +13,7 @@ consumer_key=""
 consumer_secret=""
 
 # The access tokens can be found on your applications's Details
-# page located at https://dev.twitter.com/apps (located 
+# page located at https://dev.twitter.com/apps (located
 # under "Your access token")
 access_token=""
 access_token_secret=""
@@ -32,10 +32,21 @@ class StreamListener(tweepy.StreamListener):
 
     def on_status(self, status):
         try:
-            message = client.sms.messages.create(to="+17077262685", from_="+14155992671",
+            """
+            Sends a message and makes a call if a @reply is received.
+            The 'To' number needs to be verfied with Twilio and the
+            'from' number can be changed only in paid accounts.
+            Fyi, Messages and calls are charged at a fixed rate
+            by Twilio.
+
+            The call resource needs a url which outputs valid TwiML.
+            Refer to Twilio documentation for more info on TwiML.
+            Currently it just makes a call.
+            """
+            message = client.sms.messages.create(to="XXX-XXX-XXXX", from_="+14155992671",
                                      body=status.text)
 
-            call = client.calls.create(to="17077262685", from_="+14155992671",
+            call = client.calls.create(to="XXX-XXX-XXXX", from_="+14155992671",
                                 url="http://foo.com/call.xml")
 
         except Exception, e:
