@@ -1,5 +1,5 @@
 
-These are scripts that were used for my talk 'Parsing twitter data' talk at the PhillyPUG on May 30th, 2012.
+These are scripts that were used for my 'Parsing twitter data' talk at the PhillyPUG on May 30th, 2012.
 Each script has it's own dependencies.
 
 **playmusic.py**
